@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text|Raleway');
+
+.navbar {
+  /* background-color: rgba(255,0,0,0.4); */
+  border-left: 10px solid white;
+  width: 97%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.navbar a {
+  font-size: 17px;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  padding: 15px 20px;
+}
+
+.navbar a:hover {
+  transform: scale(1.1);
+  background-color: #ff7b25;
+  color: black;
+}
+
+#logo {
+  background-color: red;
+}
