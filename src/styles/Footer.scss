@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two');
+
+.footer {
+  width: 100vw;
+  text-align: center;
+  margin-top: 1rem;
+
+  .footerLogoContainer {
+    width: 100%;
+    margin: 0 auto;
+
+    .footerLogo {
+      display: block;
+      margin: 0 auto;
+      background-color: none;
+    }
+  }
+
+  h1 {
+    color: white;
+    margin: 0;
+    font-family: 'Lobster Two', cursive;
+    font-weight: lighter;
+
+    .heart {
+      color: red;
+    }
+  }
+}
