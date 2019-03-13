@@ -4,49 +4,69 @@ import '../styles/VideoStrip.scss'
 import thumbnail from '../assets/thumb.jpeg'
 
 class VideoStrip extends React.Component {
-  constructor () {
-    super ()
-    this.playVideo = this.playVideo.bind(this)
-    this.backToThumbnail = this.backToThumbnail.bind(this)
+  constructor (props) {
+    super (props)
+    this.state = {
+      apiURL: 'https://www.googleapis.com/youtube/v3/videos',
+      categoryVideosList: {
+        categoryVideosListEtag: '',
+        videos: []
+      }
+    }
+    this.getThumbnails = this.getThumbnails.bind(this)
   }
 
-  playVideo (event) {
-    console.log(event.target)
-    // event.target.style.animation = 'zoomOut 0.3s ease 0.3s forwards'
+  componentDidMount () {
+    fetch(`${this.state.apiURL}?key=${this.props.apiKey}&part=snippet&chart=mostPopular&maxResults=24&videoCategoryId=${this.props.category.categoryId}`)
+    .then(response => response.json())
+    .then(categoryVideosDetail => {
+      let categoryVideosList = {
+        categoryVideosListEtag: categoryVideosDetail.etag,
+        videos: []
+      }
+      for (let item of categoryVideosDetail.items) {
+        categoryVideosList.videos.push({
+          etag: item.etag,
+          videoId: item.id,
+          channelId: item.snippet.channelId,
+          videoTitle: item.snippet.title,
+          videoDescription: item.snippet.description,
+          videoThumbnails: item.snippet.thumbnails
+        })
+      }
+
+      this.setState({
+        categoryVideosList
+      })
+    })
+    .catch(console.log)
   }
 
-  backToThumbnail (event) {
-    // event.target.style.animation = 'zoomOut 0.3s ease 0.3s reverse'
+  getThumbnails () {
+    console.log(this.state.categoryVideosList.videos)
+    let thumbnails
+    if (this.state.categoryVideosList.videos.length !== 0) {
+      thumbnails = this.state.categoryVideosList.videos.map((video, index) => {
+        return (
+          <div className="videoThumbnail">
+            <img src={video.videoThumbnails.medium.url} alt="THUMBNAIL"/>
+          </div>
+        )
+      })
+    }
+    return thumbnails
   }
+
 
   render () {
+    let thumbnails = this.getThumbnails()
     return (
       <div className="videoStripContainer">
         <h1 className="videoCategoryHeader">
-          Hello World
+          { this.props.category.categoryTitle }
         </h1>
         <div className="videoThumbnailContainer">
-          <div className="videoThumbnail">
-            <img src={thumbnail} alt="videoThumbnail"/>
-          </div>
-          <div className="videoThumbnail">
-            <img src={thumbnail} alt="videoThumbnail"/>
-          </div>
-          <div className="videoThumbnail special">
-            <img src={thumbnail} alt="videoThumbnail"/>
-          </div>
-          <div className="videoThumbnail">
-            <img src={thumbnail} alt="videoThumbnail"/>
-          </div>
-          <div className="videoThumbnail">
-            <img src={thumbnail} alt="videoThumbnail"/>
-          </div>
-          <div className="videoThumbnail">
-            <img src={thumbnail} alt="videoThumbnail"/>
-          </div>
-          <div className="videoThumbnail">
-            <img src={thumbnail} alt="videoThumbnail"/>
-          </div>
+          { thumbnails }
         </div>
       </div>
     )
