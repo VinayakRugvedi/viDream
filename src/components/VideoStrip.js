@@ -1,7 +1,6 @@
 import React from 'react'
 
 import '../styles/VideoStrip.scss'
-import thumbnail from '../assets/thumb.jpeg'
 
 class VideoStrip extends React.Component {
   constructor (props) {
@@ -14,6 +13,8 @@ class VideoStrip extends React.Component {
       }
     }
     this.getThumbnails = this.getThumbnails.bind(this)
+    this.showVideoGlimpse = this.showVideoGlimpse.bind(this)
+    this.backToThumbnail = this.backToThumbnail.bind(this)
   }
 
   componentDidMount () {
@@ -24,6 +25,7 @@ class VideoStrip extends React.Component {
         categoryVideosListEtag: categoryVideosDetail.etag,
         videos: []
       }
+      // console.log(categoryVideosDetail);
       for (let item of categoryVideosDetail.items) {
         categoryVideosList.videos.push({
           etag: item.etag,
@@ -31,7 +33,8 @@ class VideoStrip extends React.Component {
           channelId: item.snippet.channelId,
           videoTitle: item.snippet.title,
           videoDescription: item.snippet.description,
-          videoThumbnails: item.snippet.thumbnails
+          videoThumbnails: item.snippet.thumbnails,
+          toPlay: false
         })
       }
 
@@ -43,18 +46,42 @@ class VideoStrip extends React.Component {
   }
 
   getThumbnails () {
-    console.log(this.state.categoryVideosList.videos)
+    // console.log(this.state.categoryVideosList.videos)
     let thumbnails
     if (this.state.categoryVideosList.videos.length !== 0) {
       thumbnails = this.state.categoryVideosList.videos.map((video, index) => {
+        if (index < 1)
         return (
-          <div className="videoThumbnail">
-            <img src={video.videoThumbnails.medium.url} alt="THUMBNAIL"/>
+          <div className="videoThumbnail" key={index} id={index} onMouseOver={this.showVideoGlimpse} onMouseOut={this.backToThumbnail}>
+            <img src={video.videoThumbnails.medium.url} alt="THUMBNAIL" style={{display: video.toPlay ? 'none' : true}}/>
+            <iframe src="https://www.youtube.com/embed/ksWDVurubwE?controls=0&autoplay=true" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="shortClip" style={{display: video.toPlay ? true : 'none'}}></iframe>
           </div>
         )
       })
     }
     return thumbnails
+  }
+
+  showVideoGlimpse (event) {
+    let categoryVideosListCopy = this.state.categoryVideosList
+    console.log(event.target.id);
+    categoryVideosListCopy.videos[Number(event.currentTarget.id)].toPlay = true
+    setTimeout(() => {
+      this.setState({
+        categoryVideosList: categoryVideosListCopy
+      })
+    }, 700)
+  }
+
+  backToThumbnail (event) {
+    console.log(event.target.id);
+    let categoryVideosListCopy = this.state.categoryVideosList
+    categoryVideosListCopy.videos[Number(event.currentTarget.id)].toPlay = false
+    setTimeout(() => {
+      this.setState({
+        categoryVideosList: categoryVideosListCopy
+      })
+    }, 120)
   }
 
 
