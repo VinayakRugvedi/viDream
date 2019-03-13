@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Barcode+128+Text|Raleway|Srisakdi');
+
+.navbar {
+  width: 97%;
+  margin: 0 auto;
+  margin-left: 3vw;
+  overflow: hidden;
+
+  .link {
+    font-size: 17px;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    padding: 10px 10px;
+    transition-duration: 0.2s;
+  }
+
+  #logo {
+    font-size: 2rem;
+    font-family: 'Srisakdi', cursive;
+    font-weight: bold;
+    color: red;
+    padding-right: 2rem;
+    padding-left: 0.1rem;
+    animation: tracking-in-expand-fwd 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+    text-shadow: 0px 0px 5px orangered;
+  }
+
+  .link:hover {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes tracking-in-expand-fwd {
+  0% {
+    letter-spacing: -0.5em;
+    -webkit-transform: translateZ(-700px);
+            transform: translateZ(-700px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
