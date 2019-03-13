@@ -2,9 +2,9 @@
 
 .videoStripContainer {
   width: 97%;
-  height: 26vh;
+  min-height: 25vh;
   // border: 2px solid red;
-  margin: 3% 0% 0 3%;
+  margin: 2% 0% 0 3%;
   padding: 0;
 
   .videoCategoryHeader {
@@ -12,42 +12,55 @@
     margin: 1rem 0 1rem 0;
     font-family: 'Libre Franklin', sans-serif;
     font-weight: bold;
+    font-size: 1.7rem;
   }
 
   .videoThumbnailContainer {
-    // width: auto;
-    max-height: 70%;
-    border: 2px solid white;
-    overflow: visible;
+    min-height: 17vh;
+    max-height: 17vh;
+    padding: 0;
+    // border: 2px solid white;
+    white-space: nowrap;
+    position: relative;
   }
 
   .videoThumbnail {
-    display: inline;
-    // position: relative;
-    margin: 0% 0.25% 0% 0%;
-    border: 2px solid green;
-    transition: transform 0.3s 0.3s;
-    // z-index: -1;
-    // overflow-x: hidden;
-  }
+    width: 16%;
+    min-height: inherit;
+    max-height: inherit;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    overflow: hidden;
+    margin-right: 0.25%;
+    background-color: rgb(40,40,40);
+    // border: 2px solid green;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    z-index: 2;
 
-  .videoThumbnail:hover {
-    // animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-    border: 2px solid red;
     img {
-      width: 400px;
+      display: block;
+      min-height: inherit;
+      max-height: inherit;
+      width: 100%;
+    }
+
+    &:hover {
+      transition-delay: 0.3s;
+      // position: relative;
+      width: 30%;
+      min-height: 33vh;
+      transform: translateY(-20%);
+    }
+
+    .shortClip {
+      width: 100%;
+      min-height: inherit;
+      max-height: inherit;
     }
   }
 }
-
-// @keyframes zoomOut {
-//   0% {
-//     transform: scale(1);
-//   }
-//   100% {
-//     transform: scale(1.3);
-//   }
-// }
 
 @keyframes slide-left {
   0% {
