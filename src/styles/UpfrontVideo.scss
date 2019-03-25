@@ -1,0 +1,44 @@
+.upfrontVideoContainer {
+  width: 100vw;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  // border: 2px solid red;
+  padding: 0;
+  position: relative;
+  // z-index: -1;
+  // left: -20%;
+
+  .upfrontVideo {
+    width: 100%;
+    min-height: inherit;
+    animation: fade-in 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2.5s both;
+  }
+
+  .upfrontVideoModal {
+    width: 100%;
+    min-height: inherit;
+    max-height: inherit;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+
+    .upfrontThumbnail {
+      width: 99%;
+      min-height: inherit;
+      max-height: inherit;
+      animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    z-index: -5;
+  }
+  100% {
+    opacity: 1;
+    z-index: -5;
+  }
+}
