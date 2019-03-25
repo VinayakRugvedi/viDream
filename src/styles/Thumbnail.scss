@@ -1,0 +1,62 @@
+.videoGlimpse {
+  width: 15.8%;
+  min-height: inherit;
+  max-height: inherit;
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  overflow: hidden;
+  margin-right: 0.25%;
+  background-color: rgb(40,40,40);
+  // border: 2px solid green;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  z-index: 2;
+  position: relative;
+  // animation: fade-in 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2.5s both;
+
+  &:hover {
+    transition-delay: 0.3s;
+    // position: relative;
+    width: 30%;
+    min-height: 33vh;
+    transform: translateY(-20%);
+    // z-index: 5;
+  }
+
+  .shortClip {
+    width: 100%;
+    min-height: inherit;
+    max-height: inherit;
+    position: absolute;
+    animation: fadeInVideo 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
+    z-index: 3;
+  }
+}
+
+.videoThumbnailModal {
+  width: 100%;
+  min-height: inherit;
+  max-height: inherit;
+  // border: 2px solid red;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 2;
+
+  .videoThumbnail {
+    display: block;
+    min-height: inherit;
+    max-height: inherit;
+    width: 100%;
+  }
+}
+
+@keyframes fadeInVideo {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
