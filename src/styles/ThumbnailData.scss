@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin');
+
+.thumbnailDataContainer {
+  width: 100%;
+  min-height: inherit;
+  max-height: inherit;
+  padding: 1rem;
+  font-family: 'Libre Franklin', sans-serif;
+  background-color: rgba(0,0,0,0.4);
+  // border: 2px solid red;
+  position: relative;
+  // animation: fadeOut 2s ease-out 6s forwards;
+
+  .right {
+    position: absolute;
+    // padding: 1rem;
+    right: 7%;
+    width: 12%;
+    top: 50%;
+    transform: translateY(-50%);
+    // border: 2px solid white;
+
+    .icons {
+      display: block;
+      margin: 1rem;
+      max-height: 5%;
+      border: 2px solid white;
+      border-radius: 50%;
+      transition-duration: 0.5s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .videoViewsContainer {
+    width: 45%;
+    max-height: 15%;
+    position: absolute;
+    // border: 2px solid white;
+    top: 5%;
+
+    .eyeIcon {
+      width: 18%;
+      max-height: 15%;
+      border: 2px solid white;
+      border-radius: 50%;
+    }
+
+    .viewsCount {
+      color: white;
+      // border: 2px solid white;
+      padding-left: 0.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .playIconContainer {
+    width: 8%;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+  }
+
+  .videoTitle {
+    width: 75%;
+    max-height: 15%;
+    overflow: hidden;
+    // border: 2px solid white;
+    position: absolute;
+    top: 60%;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+    white-space: normal;
+  }
+
+  .videoDuration {
+    // border: 2px solid white;
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    top: 78%;
+  }
+
+  .slideDownArrow {
+    width: 10%;
+    padding: 0%;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-75%);
+
+    &:hover {
+      border-radius: 50%;
+      background-color: rgba(255,0,0,0.3);
+    }
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    background-color: none;
+  }
+}
