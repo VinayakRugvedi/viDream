@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin|Merienda');
+
 .upfrontVideoContainer {
   width: 100vw;
   min-height: 100vh;
@@ -6,12 +8,14 @@
   // border: 2px solid red;
   padding: 0;
   position: relative;
+  overflow: hidden;
   // z-index: -1;
   // left: -20%;
 
   .upfrontVideo {
     width: 100%;
-    min-height: inherit;
+    min-height: 130vh;
+    transform: translateY(-8%);
     animation: fade-in 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2.5s both;
   }
 
@@ -24,10 +28,113 @@
     left: 0%;
 
     .upfrontThumbnail {
-      width: 99%;
+      width: 100%;
       min-height: inherit;
       max-height: inherit;
       animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
+  }
+
+  .upfrontVideoDataModal {
+    width: 35vw;
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    transform: translateY(-50%);
+    color: white;
+
+    .upfrontVideoDataHolder {
+      width: 100%;
+      // max-height: 32vh;
+      // border: 2px solid white;
+
+      .upfrontVideoCategory {
+        margin: 0 auto;
+        padding: 1rem;
+        text-align: center;
+        font-size: 2.5rem;
+        white-space: normal;
+        font-weight: bold;
+        font-family: 'Libre Franklin', sans-serif;
+      }
+
+      .upfrontVideoTitle {
+        margin: 0 auto;
+        padding: 1rem;
+        text-align: center;
+        font-family: 'Merienda', sans-serif;
+        font-size: 4rem;
+        font-weight: bolder;
+        line-height: 1.2;
+        color: white;
+      }
+    }
+
+    .upfrontVideoButtons {
+      padding-left: 1.5rem;
+      width: 100%;
+      font-family: 'Libre Franklin', sans-serif;
+
+      .playButton, .addToListButton {
+        width: 30%;
+        float: left;
+        height: 6vh;
+        background-color: rgba(0,0,0,0.4);
+        border: none;
+        border-radius: 5px;
+        color: white;
+        transition-duration: 0.5s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        .upfrontVideoPlayButtonContent, .upfrontVideoAddButtonContent {
+          width: 70%;
+          height: 100%;
+          margin: 0 auto;
+          position: relative;
+
+          .upfrontVideoPlayIcon, .upfrontVideoAddIcon {
+            display: block;
+            height: 100%;
+            // border: 2px solid white;
+          }
+
+          .upfrontVideoButtonText {
+            position: absolute;
+            left: 40%;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .addToListButton {
+        width: 40%;
+        margin-left: 2rem;
+      }
+    }
+  }
+
+  .upfrontVideoToggleMute {
+    width: 10vw;
+    height: 7vh;
+    position: absolute;
+    bottom: 25%;
+    right: 0%;
+    background-color: rgba(0,0,0,0.4);
+    padding-left: 1rem;
+    transition-duration: 0.5s;
+
+    .upfrontVideoSpeakerIcon {
+      height: 100%;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -35,10 +142,10 @@
 @keyframes fade-in {
   0% {
     opacity: 0;
-    z-index: -5;
+    // z-index: -5;
   }
   100% {
     opacity: 1;
-    z-index: -5;
+    // z-index: -5;
   }
 }
