@@ -21,15 +21,19 @@
     width: 30%;
     min-height: 33vh;
     transform: translateY(-20%);
+    // border: 2px solid red;
     // z-index: 5;
   }
 
   .shortClip {
-    width: 100%;
-    min-height: inherit;
-    max-height: inherit;
+    // width: 100vw;
+    min-height: 50vh;
+    // max-height: inherit;
     position: absolute;
-    animation: fadeInVideo 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
+    // top: 0%;
+    // left: 0%;
+    animation: fadeIn 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
+    transform: translateX(-12%) + translateY(-17%);
     z-index: 3;
   }
 }
@@ -52,11 +56,33 @@
   }
 }
 
-@keyframes fadeInVideo {
+.thumbnailDataModal {
+  width: 100%;
+  min-height: inherit;
+  max-height: inherit;
+  // border: 2px solid red;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 4;
+  animation: fadeIn 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.3s both, fadeOut 2s ease-out 6s forwards;
+}
+
+@keyframes fadeIn {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    background-color: none;
   }
 }
