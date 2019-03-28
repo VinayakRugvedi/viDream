@@ -22,42 +22,25 @@
     // border: 2px solid white;
     white-space: nowrap;
     position: relative;
-  }
 
-  .videoThumbnail {
-    width: 16%;
-    min-height: inherit;
-    max-height: inherit;
-    display: inline-block;
-    position: relative;
-    vertical-align: top;
-    overflow: hidden;
-    margin-right: 0.25%;
-    background-color: rgb(40,40,40);
-    // border: 2px solid green;
-    cursor: pointer;
-    transition-duration: 0.3s;
-    z-index: 2;
-
-    img {
-      display: block;
+    .slideRight {
+      width: 4.1%;
       min-height: inherit;
       max-height: inherit;
-      width: 100%;
-    }
+      // border: 2px solid white;
+      position: absolute;
+      top: 0%;
+      right: -0.5%;
+      background-color: rgba(20, 20, 20, 0.4);
+      z-index: 2;
 
-    &:hover {
-      transition-delay: 0.3s;
-      // position: relative;
-      width: 30%;
-      min-height: 33vh;
-      transform: translateY(-20%);
-    }
-
-    .shortClip {
-      width: 100%;
-      min-height: inherit;
-      max-height: inherit;
+      img {
+        // border: 2px solid white;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: none;
+      }
     }
   }
 }
