@@ -36,7 +36,16 @@ class ThumbnailData extends React.Component {
         <img src={slideDownArrow} alt="\\//" className="slideDownArrow"/>
 
         <div className="right">
-          <img src={speakerMuted} alt="Muted" className="speakerIcon icons"/>
+          <img src={speakerMuted} alt="MUTED"
+            className="speakerIcon icons"
+            style={{display: this.state.muted ? true : 'none'}}
+            onClick={this.props.toggleMute}/>
+
+          <img src={speakerPlaying} alt="PLAYING"
+            className="speakerIcon icons"
+            style={{display: this.state.muted ? 'none' : 'true'}}
+            onClick={this.props.toggleMute}/>
+
           <img src={likeIcon} alt="LIKE" className="likeIcon icons"/>
           <img src={dislikeIcon} alt="DisLIKE" className="dislikeIcon icons"/>
           <img src={addIcon} alt="ADD" className="addIcon icons"/>
