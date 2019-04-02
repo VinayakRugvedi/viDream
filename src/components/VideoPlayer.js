@@ -3,6 +3,7 @@ import React from 'react'
 import '../styles/VideoPlayer.scss'
 import thumbnail from '../assets/bbcThumbnail.png'
 import leftArrow from '../assets/leftArrow.svg'
+import eclipseLoading from '../assets/eclipseLoading.svg'
 
 import ReactPlayer from 'react-player'
 
@@ -11,29 +12,23 @@ class VideoPlayer extends React.Component {
     super(props)
     this.state = {
       toPlay: false,
-      isPaused: true
+      isPaused: false
     }
     this.startPlaying = this.startPlaying.bind(this)
     this.showBackToBrowse = this.showBackToBrowse.bind(this)
-    this.hideBackToBrowse = this.hideBackToBrowse.bind(this)
     this.goBackToBrowse = this.goBackToBrowse.bind(this)
   }
 
   startPlaying () {
     this.setState({
-      toPlay: true
+      toPlay: true,
+      isPaused: false
     })
   }
 
   showBackToBrowse () {
     this.setState({
       isPaused: true
-    })
-  }
-
-  hideBackToBrowse () {
-    this.setState({
-      isPaused: false
     })
   }
 
@@ -51,15 +46,19 @@ class VideoPlayer extends React.Component {
           controls="true"
           playing="true"
           className="videoPlayer"
-          onReady={this.startPlaying}
           onPause={this.showBackToBrowse}
-          onPlay={this.hideBackToBrowse}/>
+          onPlay={this.startPlaying}/>
 
           <div className="backToBrowse"
             style={{display: this.state.isPaused ? true : 'none'}}
             onClick={this.goBackToBrowse}>
             <img src={leftArrow} alt="BACK TO BROWSE ICON" className="leftArrowIcon"/>
             <div className="backToBrowseText">Back to Browse</div>
+          </div>
+
+          <div className="videoLoading"
+            style={{display: this.state.toPlay ? 'none' : true}}>
+            <img src={eclipseLoading} alt="LOADING" className="videoLoadingIcon"/>
           </div>
 
         <div className="videoPlayerModal"
