@@ -1,0 +1,13 @@
+.videoDetailHolder {
+  background-color: black;
+  width: 100vw;
+  height: 31vw;
+  position: relative;
+
+  .closeVideoDetail {
+    width: 3%;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+  }
+}
