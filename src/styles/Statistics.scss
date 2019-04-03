@@ -1,0 +1,24 @@
+.videoDetailStatistics {
+  width: 50%;
+  height: 40%;
+  margin-top: 2rem;
+  margin-left: 5vw;
+  // border: 2px solid white;
+  color: white;
+
+  .statisticHolder {
+    width: 100%;
+    height: 33.3%;
+    // border: 2px solid red;
+  }
+
+  .statisticIcon {
+    height: 100%;
+  }
+
+  .statisticCount {
+    display: inline-block;
+    font-size: 1.7vw;
+    transform: translateY(-75%);
+  }
+}
