@@ -4,10 +4,10 @@
 
     .videoStripsHolder {
       width: inherit;
+      height: fit-content;
       // border: 2px solid red;
       position: absolute;
-      // bottom: 1%;
-      bottom: -10%;
+      top: 80%;
     }
 
 }
