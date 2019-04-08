@@ -5,25 +5,28 @@
   width: 100vw;
   height: 31vw;
   position: relative;
+  top: -3.4%;
+  overflow: hidden;
+  animation: fadeIn 0.5s both;
 
   .videoDetailTextHolder {
     box-sizing: border-box;
-    padding-left: 3rem;
-    padding-top: 4rem;
+    padding-left: 4vw;
+    padding-top: 4.5vw;
     width: 30%;
     height: 100%;
     margin: 0;
-    border: 2px solid white;
+    // border: 2px solid white;
     float: left;
     font-family: 'Libre Franklin', cursive;
-    box-shadow: inset 0px 0px 250px blue;
+    // box-shadow: inset 0px 0px 250px blue;
 
     .videoTitleHolder {
       box-sizing: border-box;
       width: 100%;
       min-height: 20%;
       max-height: 50%;
-      padding: 1rem;
+      padding: 0.7vw;
       padding-left: 0;
       text-align: left;
       color: white;
@@ -38,7 +41,7 @@
     width: 70%;
     height: 100%;
     margin: 0;
-    border: 2px solid white;
+    // border: 2px solid white;
     float: left;
     overflow: hidden;
     position: relative;
@@ -51,7 +54,7 @@
     .videoGlimpseModal {
       width: 100%;
       height: 100%;
-      border: 2px solid red;
+      // border: 2px solid red;
       position: absolute;
       top: 0%;
       left: 0%;
@@ -60,13 +63,14 @@
         width: 100%;
         min-height: 100%;
         max-height: 100%;
+        position: absolute;
       }
 
       .videoDetailShadow {
         position: absolute;
         width: 100%;
         height: 100%;
-        box-shadow: inset 100px 0 250px 10px black;
+        box-shadow: inset 150px 0 250px 10px black;
       }
     }
   }
@@ -75,7 +79,8 @@
     width: 3%;
     position: absolute;
     top: 0%;
-    right: 0%;
+    right: 1%;
+    cursor: pointer;
   }
 }
 
@@ -118,4 +123,61 @@
       }
     }
   }
+}
+
+.videoDetailHolder {
+  .videoDetailTabs {
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    // border: 2px solid white;
+
+    .tab {
+      width: 50%;
+      height: 100%;
+      float: left;
+      font-size: 1.2vw;
+      font-family: 'Libre Franklin', cursive;
+      font-weight: bold;
+      color: white;
+
+      .overviewText, .descriptionText {
+        box-sizing: border-box;
+        width: 20%;
+        height: 100%;
+        text-align: center;
+
+        .tabText {
+          width: fit-content;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          cursor: pointer;
+
+          &:hover {
+            border-bottom: 10px solid red;
+          }
+        }
+      }
+
+      .overviewText {
+        float: right;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+0% {
+  opacity: 0;
+  height: 0vh;
+}
+90% {
+  opacity: 0.5;
+}
+100% {
+  opacity: 1;
+  height: 31vw;
+}
 }
