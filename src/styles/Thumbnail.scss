@@ -1,4 +1,4 @@
-.videoGlimpse {
+.thumbnailVideoGlimpse {
   width: 15.8%;
   min-height: inherit;
   max-height: inherit;
@@ -13,17 +13,8 @@
   transition-duration: 0.3s;
   z-index: 2;
   position: relative;
+  z-index: 2;
   // animation: fade-in 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2.5s both;
-
-  &:hover {
-    transition-delay: 0.3s;
-    // position: relative;
-    width: 30%;
-    min-height: 33vh;
-    transform: translateY(-20%);
-    // border: 2px solid red;
-    // z-index: 5;
-  }
 
   .shortClip {
     // width: 100vw;
@@ -35,6 +26,19 @@
     animation: fadeIn 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2s both;
     transform: translateX(-12%) + translateY(-17%);
     z-index: 3;
+  }
+}
+
+.activateHover {
+  &:hover {
+    transition-delay: 0.3s;
+    // position: absolute;
+    width: 30%;
+    min-height: 33vh;
+    transform: translateY(-20%);
+    // left: 50%;
+    // border: 2px solid red;
+    // z-index: 5;
   }
 }
 
@@ -65,8 +69,27 @@
   top: 0%;
   left: 0%;
   z-index: 4;
-  animation: fadeIn 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.3s both, fadeOut 2s ease-out 6s forwards;
+  animation: fadeIn 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.3s both
+  // , fadeOut 2s ease-out 6s forwards;
 }
+
+.thumbnailVideoGlimpse + .highlight {
+  transition-delay: 0.3s;
+  box-sizing: border-box;
+  width: 15.8%;
+  display: inline-block;
+  min-height: inherit;
+  max-height: inherit;
+  position: absolute;
+  transform: translateX(-101.7%);
+  z-index: 5;
+}
+
+.thumbnailVideoGlimpse + .showHighlightBorder {
+  border: 5px solid white;
+  background-color: rgba(0,0,0,0.5);
+}
+
 
 @keyframes fadeIn {
   0% {
