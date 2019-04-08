@@ -50,6 +50,15 @@
     }
   }
 
+  .videoLoading {
+    position: absolute;
+    // border: 2px solid white;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translateX(-50%) + translateY(-50%);
+  }
+
   .videoPlayerModal {
     width: 100%;
     height: 100%;
