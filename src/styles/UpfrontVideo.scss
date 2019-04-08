@@ -13,9 +13,9 @@
   // left: -20%;
 
   .upfrontVideo {
-    width: 100%;
+    // width: 100%;
     min-height: 130vh;
-    transform: translateY(-8%);
+    transform: translateY(-11%);
     animation: fade-in 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) 2.5s both;
   }
 
@@ -60,10 +60,12 @@
 
       .upfrontVideoTitle {
         margin: 0 auto;
+        margin-bottom: 1rem;
         padding: 1rem;
-        text-align: center;
+        text-align: left;
+        word-wrap: normal;
         font-family: 'Merienda', sans-serif;
-        font-size: 4rem;
+        font-size: 3.5rem;
         font-weight: bolder;
         line-height: 1.2;
         color: white;
@@ -71,7 +73,7 @@
     }
 
     .upfrontVideoButtons {
-      padding-left: 1.5rem;
+      padding-left: 1rem;
       width: 100%;
       font-family: 'Libre Franklin', sans-serif;
 
