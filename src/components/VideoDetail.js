@@ -39,11 +39,14 @@ class VideoDetail extends React.Component {
   }
 
   render () {
+    let validThumbnail = this.props.video.videoThumbnails.maxres === undefined ?
+                          this.props.video.videoThumbnails.medium.url :
+                          this.props.video.videoThumbnails.maxres.url
     return (
-      <div className="videoDetailHolder">
+      <div className="videoDetailHolder" style={{display: this.props.toShowVideoDetail ? true : 'none'}}>
           <div className="videoDetailTextHolder">
             <div className="videoTitleHolder">
-[master fe51332] Add basic styles to Video Detail component to start with?
+             { this.props.video.videoTitle }
             </div>
             <div className="videoDetailButtons">
               <button className="videoDetailPlayButton">
@@ -55,33 +58,38 @@ class VideoDetail extends React.Component {
                 <div className="videoDetailButtonText">My List</div>
               </button>
             </div>
-            <Statistics/>
+            <Statistics video={this.props.video}/>
           </div>
           <div className="videoGlimpseInVideoDetail">
             <ReactPlayer
-              url="https://www.youtube.com/watch?v=MlRlgbrAVOs"
+              url={ `https://www.youtube.com/watch?v=${this.props.video.videoId}` }
               width="100%"
               height="128%"
+              muted="true"
               playing={this.state.toPlay || this.state.autoPlay}
               className="videoGlimpsePlayer"
               onStart={this.playVideoGlimpse}/>
 
             <div className="videoGlimpseModal">
-              <img src={thumbnail} alt="THUMBNAIL"
+              <img src={validThumbnail} alt="THUMBNAIL"
                 className="videoGlimpseThumbnail"
                 style={{display: this.state.toPlay ? 'none' : true}}/>
               <div className="videoDetailShadow"></div>
             </div>
           </div>
         <div className="videoDetailTabs">
-          <div className="videoDetailOverview">
-            Overview
+          <div className="videoDetailOverview tab">
+            <div className="overviewText">
+              <div className="tabText">Overview</div>
+            </div>
           </div>
-          <div className="videoDetailDescription">
-            Description
+          <div className="videoDetailDescription tab">
+            <div className="descriptionText tabText">
+              <div className="tabText">Description</div>
+            </div>
           </div>
         </div>
-        <div className="closeVideoDetail" onClick={this.closeVideoDetail}>
+        <div className="closeVideoDetail" onClick={this.props.closeVideoDetail}>
           <img src={closeIcon} alt="CLOSE" className="closeIcon"/>
         </div>
       </div>
