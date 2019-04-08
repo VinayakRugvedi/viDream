@@ -9,8 +9,8 @@ function Footer () {
       <div className="footerLogoContainer">
         <img src={footerLogo} alt="viDream" className="footerLogo"/>
       </div>
-      <h1>With <span className="heart">{'\u2764'}</span></h1>
-      <h1>&copy;A Vinayak Rugvedi @Geekskool</h1>
+      <h1 className="footerText">With <span className="heart">{'\u2764'}</span></h1>
+      <h1 className="footerText">&copy;A Vinayak Rugvedi @Geekskool</h1>
     </div>
   )
 }
