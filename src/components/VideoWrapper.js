@@ -7,21 +7,17 @@ class VideoWrapper extends React.Component {
   constructor (props) {
     super (props)
     this.state = {
-      toShowVideoDetail: false,
-      videoInConcern: {}
+      videoInConcern: {},
+      toShowVideoDetail: false
     }
-    // this.showVideoDetail = this.showVideoDetail.bind(this)
     this.closeVideoDetail = this.closeVideoDetail.bind(this)
   }
 
   showVideoDetail = (videoInConcern) => {
     console.log(videoInConcern)
     this.setState({
-      videoInConcern
-    }, () => {
-      this.setState({
-        toShowVideoDetail: true
-      })
+      videoInConcern,
+      toShowVideoDetail: true
     })
   }
 
@@ -35,7 +31,7 @@ class VideoWrapper extends React.Component {
     return (
       <>
         <VideoStrip apiKey={this.props.apiKey} category={this.props.item} getUpfrontVideo={this.props.getUpfrontVideo} showVideoDetail={this.showVideoDetail}
-        toShowVideoDetail={this.state.toShowVideoDetail}/>
+        toShowVideoDetail={this.state.toShowVideoDetail} videoInConcernId={this.state.videoInConcern.videoId === undefined ? '' : this.state.videoInConcern.videoId}/>
         {
           Object.keys(this.state.videoInConcern).length !== 0 ?
           <VideoDetail
