@@ -1,6 +1,9 @@
 import React from 'react'
 
 import '../styles/VideoStrip.scss'
+import slideRightArrow from '../assets/slideRightArrow.svg'
+
+import Thumbnail from './Thumbnail'
 
 class VideoStrip extends React.Component {
   constructor (props) {
@@ -13,14 +16,13 @@ class VideoStrip extends React.Component {
       }
     }
     this.getThumbnails = this.getThumbnails.bind(this)
-    this.showVideoGlimpse = this.showVideoGlimpse.bind(this)
-    this.backToThumbnail = this.backToThumbnail.bind(this)
   }
 
   componentDidMount () {
-    fetch(`${this.state.apiURL}?key=${this.props.apiKey}&part=snippet&chart=mostPopular&maxResults=24&videoCategoryId=${this.props.category.categoryId}`)
+    fetch(`${this.state.apiURL}?key=${this.props.apiKey}&part=snippet,contentDetails,statistics&chart=mostPopular&maxResults=7&videoCategoryId=${this.props.category.categoryId}`)
     .then(response => response.json())
     .then(categoryVideosDetail => {
+      // console.log(categoryVideosDetail)
       let categoryVideosList = {
         categoryVideosListEtag: categoryVideosDetail.etag,
         videos: []
@@ -34,8 +36,20 @@ class VideoStrip extends React.Component {
           videoTitle: item.snippet.title,
           videoDescription: item.snippet.description,
           videoThumbnails: item.snippet.thumbnails,
-          toPlay: false
+          videoDuration: item.contentDetails.duration,
+          videoLikes: item.statistics.likeCount,
+          videoDislikes: item.statistics.dislikeCount,
+          videoViews: item.statistics.viewCount
         })
+      }
+
+      //Choosing category Id to be 1 since its film and animation
+      console.log(this.props.category.categoryId, 'catttttttttt')
+      if (this.props.category.categoryId === '1') {
+        console.log('The most Popular ones')
+        let randomVideoIndex = Math.floor(Math.random() * Math.floor(categoryVideosList.videos.length))
+        // console.log(randomVideo)
+        this.props.getUpfrontVideo(categoryVideosList.videos[randomVideoIndex])
       }
 
       this.setState({
@@ -50,43 +64,20 @@ class VideoStrip extends React.Component {
     let thumbnails
     if (this.state.categoryVideosList.videos.length !== 0) {
       thumbnails = this.state.categoryVideosList.videos.map((video, index) => {
-        if (index < 1)
-        return (
-          <div className="videoThumbnail" key={index} id={index} onMouseOver={this.showVideoGlimpse} onMouseOut={this.backToThumbnail}>
-            <img src={video.videoThumbnails.medium.url} alt="THUMBNAIL" style={{display: video.toPlay ? 'none' : true}}/>
-            <iframe src="https://www.youtube.com/embed/ksWDVurubwE?controls=0&autoplay=true" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="shortClip" style={{display: video.toPlay ? true : 'none'}}></iframe>
-          </div>
-        )
+        if (index < 7) { // Control the number of thumbnails in a video stripts
+          return (
+            <Thumbnail video={video} key={index} showVideoDetail={this.props.showVideoDetail}
+            toShowVideoDetail={this.props.toShowVideoDetail} videoInConcernId={this.props.videoInConcernId}/>
+          )
+        }
       })
     }
     return thumbnails
   }
 
-  showVideoGlimpse (event) {
-    let categoryVideosListCopy = this.state.categoryVideosList
-    console.log(event.target.id);
-    categoryVideosListCopy.videos[Number(event.currentTarget.id)].toPlay = true
-    setTimeout(() => {
-      this.setState({
-        categoryVideosList: categoryVideosListCopy
-      })
-    }, 700)
-  }
-
-  backToThumbnail (event) {
-    console.log(event.target.id);
-    let categoryVideosListCopy = this.state.categoryVideosList
-    categoryVideosListCopy.videos[Number(event.currentTarget.id)].toPlay = false
-    setTimeout(() => {
-      this.setState({
-        categoryVideosList: categoryVideosListCopy
-      })
-    }, 120)
-  }
-
-
   render () {
     let thumbnails = this.getThumbnails()
+    if (this.state.categoryVideosList.videos.length === 0) return null
     return (
       <div className="videoStripContainer">
         <h1 className="videoCategoryHeader">
@@ -94,6 +85,9 @@ class VideoStrip extends React.Component {
         </h1>
         <div className="videoThumbnailContainer">
           { thumbnails }
+          <div className="slideRight">
+            <img src={slideRightArrow} alt="->" className="slideDownArrowIcon"/>
+          </div>
         </div>
       </div>
     )
