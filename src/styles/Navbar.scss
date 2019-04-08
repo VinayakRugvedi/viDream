@@ -3,8 +3,14 @@
 .navbar {
   width: 97%;
   margin: 0 auto;
-  margin-left: 3vw;
+  padding-left: 3vw;
+  padding-top: 0.5vh;
+  padding-bottom: 1vh;
   overflow: hidden;
+  position: absolute;
+  top: 0%;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 9;
 
   .link {
     font-size: 17px;
