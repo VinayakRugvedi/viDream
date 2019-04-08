@@ -1,17 +1,17 @@
 import React, {Component} from 'react'
 
-import '../styles/Navbar.css'
+import '../styles/Navbar.scss'
 
 class Navbar extends Component {
   render() {
     return (
       <nav className="navbar">
-        <a href="#a" id="logo">viDream</a>
-        <a href="#b">Home</a>
-        <a href="#c">Series</a>
-        <a href="#d">Films</a>
-        <a href="#e">Recently added</a>
-        <a href="#f">My List</a>
+        <a href="#a" id="logo" className="link"><span className="viDream">viDream</span></a>
+        <a href="#b" className="link">Home</a>
+        <a href="#c" className="link">Series</a>
+        <a href="#d" className="link">Films</a>
+        <a href="#e" className="link">Recently added</a>
+        <a href="#f" className="link">My List</a>
       </nav>
     )
   }
