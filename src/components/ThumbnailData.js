@@ -18,7 +18,7 @@ class ThumbnailData extends React.Component {
 
   render () {
     return (
-      <div className="thumbnailDataContainer" style={{display:true}}>
+      <div className="thumbnailDataContainer">
         <div className="videoViewsContainer">
           <img src={eyeIcon} alt="Views" className="eyeIcon"/>
           <span className="viewsCount"> { this.props.videoViews } </span>
@@ -33,21 +33,23 @@ class ThumbnailData extends React.Component {
           { this.props.videoDuration.slice(2) }
         </div>
 
-        <img src={slideDownArrow} alt="\\//" className="slideDownArrow"/>
+        <img src={slideDownArrow} alt="\\//"
+          className="slideDownArrow"
+          onClick={() => this.props.sendVideoDetail(this.props.videoId)}/> //show Video vs send Video
 
         <div className="right">
           <img src={speakerMuted} alt="MUTED"
             className="speakerIcon icons"
-            style={{display: this.state.muted ? true : 'none'}}
+            style={{display: this.props.muted ? true : 'none'}}
             onClick={this.props.toggleMute}/>
 
           <img src={speakerPlaying} alt="PLAYING"
             className="speakerIcon icons"
-            style={{display: this.state.muted ? 'none' : 'true'}}
+            style={{display: this.props.muted ? 'none' : true}}
             onClick={this.props.toggleMute}/>
 
           <img src={likeIcon} alt="LIKE" className="likeIcon icons"/>
-          <img src={dislikeIcon} alt="DisLIKE" className="dislikeIcon icons"/>
+          <img src={dislikeIcon} alt="DISLIKE" className="dislikeIcon icons"/>
           <img src={addIcon} alt="ADD" className="addIcon icons"/>
         </div>
       </div>
