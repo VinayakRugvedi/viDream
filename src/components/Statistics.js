@@ -10,15 +10,21 @@ function Statistics (props) {
     <div className="videoDetailStatistics">
       <div className="statisticHolder">
         <img src={viewIcon} alt="VIEW" className="statisticIcon"/>
-        <div className="statisticCount">12345678</div>
+        <div className="statisticCount">
+          { props.video.videoViews }
+        </div>
       </div>
       <div className="statisticHolder">
         <img src={likeIcon} alt="LIKES" className="statisticIcon"/>
-        <div className="statisticCount">12345678</div>
+        <div className="statisticCount">
+          { props.video.videoLikes }
+        </div>
       </div>
       <div className="statisticHolder">
         <img src={dislikeIcon} alt="DISLIKES" className="statisticIcon"/>
-        <div className="statisticCount">12345678</div>
+        <div className="statisticCount">
+          { props.video.videoDislikes }
+        </div>
       </div>
     </div>
   )
